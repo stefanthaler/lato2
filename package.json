@@ -1,0 +1,24 @@
+{
+  "name": "@stefanthaler/lato2",
+  "version": "1.0.0",
+  "description": "Lato 2.0 font",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefanthaler/lato2.git"
+  },
+  "keywords": [
+    "Lato",
+    "2.0",
+    "font"
+  ],
+  "author": "Stefan Thaler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stefanthaler/lato2/issues"
+  },
+  "homepage": "https://github.com/stefanthaler/lato2#readme"
+}
