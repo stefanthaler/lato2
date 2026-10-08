@@ -1,9 +1,8 @@
-/* lato2-all-200-normal*/
+/* lato2-all-200-normal */
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-display: swap;
   font-weight: 200;
   src: url('./files/lato-all-200-normal.woff2') format('woff2'), url('./files/lato-all-200-normal.woff') format('woff');
-  
 }
