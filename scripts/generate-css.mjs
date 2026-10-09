@@ -53,9 +53,6 @@ for (const subset of subsets) {
   for (const face of faces) {
     const name = `${face.weight}${face.style === 'italic' ? '-italic' : ''}`
     writeCssEntries(`${subset}/${name}`, [face])
-    if (subset === 'latin') {
-      writeCssEntries(name, [face])
-    }
   }
 
   writeCssEntries(subset, subset === 'latin' ? defaultFaces : faces)

@@ -13,9 +13,9 @@ npm install @stefanthaler/lato2
 Use the CSS entries in `modern/` to include only WOFF2 font assets in your application:
 
 ```js
-import '@stefanthaler/lato2/modern/400.css';
-import '@stefanthaler/lato2/modern/600.css';
-import '@stefanthaler/lato2/modern/700.css';
+import '@stefanthaler/lato2/modern/latin/400.css';
+import '@stefanthaler/lato2/modern/latin/600.css';
+import '@stefanthaler/lato2/modern/latin/700.css';
 ```
 
 Apply the font family in your stylesheet:
@@ -33,14 +33,17 @@ For example, `all-400.css` is now `all/400.css`, and `modern/latin-400.css` is n
 `modern/latin/400.css`. These paths replace the former prefixed paths and the
 root-level `*-modern.css` paths; no compatibility copies are provided.
 
-Short Latin entries such as `400.css` and the aggregates `all.css`, `latin.css`,
-and `index.css` remain directly in the package root and in `modern/`.
+Individual Latin entries exist only in `latin/` and `modern/latin/`. Migrate
+`400.css` to `latin/400.css` and `modern/400.css` to `modern/latin/400.css`.
+The same applies to every weight and italic variant: `400-italic.css` becomes
+`latin/400-italic.css`, and `modern/400-italic.css` becomes
+`modern/latin/400-italic.css`. No compatibility copies or redirects are provided.
+Only the aggregates `all.css`, `latin.css`, and `index.css` remain directly in
+the package root and in `modern/`.
 
 | Original entry | WOFF2-only entry | Font selection |
 | --- | --- | --- |
 | `index.css` | `modern/index.css` | Latin, weights 400/600/700, normal |
-| `400.css` | `modern/400.css` | Latin, selected weight, normal |
-| `400-italic.css` | `modern/400-italic.css` | Latin, selected weight, italic |
 | `latin/400.css` | `modern/latin/400.css` | Latin, selected weight, normal |
 | `latin/400-italic.css` | `modern/latin/400-italic.css` | Latin, selected weight, italic |
 | `all/400.css` | `modern/all/400.css` | Full character set, selected weight, normal |
@@ -69,9 +72,10 @@ both sets, including their subset directories:
 npm run build:css
 ```
 
-The generator creates 114 CSS entries: 21 directly in the package root and 21
+The generator creates 78 CSS entries: 3 directly in the package root and 3
 directly in `modern/`, plus 18 in each of `all/`, `latin/`, `modern/all/`, and
-`modern/latin/`. Font asset links are relative to each CSS file's directory.
+`modern/latin/`: 39 original and 39 modern entries in total. Font asset links
+are relative to each CSS file's directory.
 
 Do not edit the generated CSS files directly.
 
