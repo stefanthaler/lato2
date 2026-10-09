@@ -9,8 +9,8 @@ const subsets = ['latin', 'all']
 const weights = [100, 200, 300, 400, 500, 600, 700, 800, 900]
 const styles = ['italic', 'normal']
 const variants = [
-  { directory: '', formats: ['woff2', 'woff'] },
-  { directory: 'modern', formats: ['woff2'] },
+  { directory: '', formats: ['woff2'] },
+  { directory: 'legacy', formats: ['woff2', 'woff'] },
 ]
 const defaultFaces = [400, 600, 700].map(weight => ({ subset: 'latin', weight, style: 'normal' }))
 
