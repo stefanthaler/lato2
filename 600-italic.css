@@ -1,9 +1,8 @@
-/* lato2-latin-600-italic*/
+/* lato2-latin-600-italic */
 @font-face {
   font-family: 'Lato';
   font-style: italic;
   font-display: swap;
   font-weight: 600;
   src: url('./files/lato-latin-600-italic.woff2') format('woff2');
-  
 }

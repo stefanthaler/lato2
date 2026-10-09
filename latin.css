@@ -1,4 +1,4 @@
-/* lato2-latin-400-normal*/
+/* lato2-latin-400-normal */
 @font-face {
   font-family: 'Lato';
   font-style: normal;
@@ -6,7 +6,8 @@
   font-weight: 400;
   src: url('./files/lato-latin-400-normal.woff2') format('woff2');
 }
-/* lato2-latin-600-normal*/
+
+/* lato2-latin-600-normal */
 @font-face {
   font-family: 'Lato';
   font-style: normal;
@@ -14,7 +15,8 @@
   font-weight: 600;
   src: url('./files/lato-latin-600-normal.woff2') format('woff2');
 }
-/* lato2-latin-700-normal*/
+
+/* lato2-latin-700-normal */
 @font-face {
   font-family: 'Lato';
   font-style: normal;
