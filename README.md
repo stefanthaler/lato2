@@ -10,12 +10,12 @@ npm install @stefanthaler/lato2
 
 ## WOFF2-only imports
 
-Use the `-modern.css` entries to include only WOFF2 font assets in your application:
+Use the CSS entries in `modern/` to include only WOFF2 font assets in your application:
 
 ```js
-import '@stefanthaler/lato2/400-modern.css';
-import '@stefanthaler/lato2/600-modern.css';
-import '@stefanthaler/lato2/700-modern.css';
+import '@stefanthaler/lato2/modern/400.css';
+import '@stefanthaler/lato2/modern/600.css';
+import '@stefanthaler/lato2/modern/700.css';
 ```
 
 Apply the font family in your stylesheet:
@@ -26,19 +26,21 @@ body {
 }
 ```
 
-Every existing CSS entry has a corresponding `-modern.css` entry:
+Every existing CSS entry has a corresponding entry with the same filename in
+`modern/`. These paths replace the former root-level `*-modern.css` paths;
+no compatibility copies are provided.
 
 | Original entry | WOFF2-only entry | Font selection |
 | --- | --- | --- |
-| `index.css` | `index-modern.css` | Latin, weights 400/600/700, normal |
-| `400.css` | `400-modern.css` | Latin, selected weight, normal |
-| `400-italic.css` | `400-italic-modern.css` | Latin, selected weight, italic |
-| `latin-400.css` | `latin-400-modern.css` | Latin, selected weight, normal |
-| `latin-400-italic.css` | `latin-400-italic-modern.css` | Latin, selected weight, italic |
-| `all-400.css` | `all-400-modern.css` | Full character set, selected weight, normal |
-| `all-400-italic.css` | `all-400-italic-modern.css` | Full character set, selected weight, italic |
-| `latin.css` | `latin-modern.css` | Latin, weights 400/600/700, normal |
-| `all.css` | `all-modern.css` | Full character set, all weights and styles |
+| `index.css` | `modern/index.css` | Latin, weights 400/600/700, normal |
+| `400.css` | `modern/400.css` | Latin, selected weight, normal |
+| `400-italic.css` | `modern/400-italic.css` | Latin, selected weight, italic |
+| `latin-400.css` | `modern/latin-400.css` | Latin, selected weight, normal |
+| `latin-400-italic.css` | `modern/latin-400-italic.css` | Latin, selected weight, italic |
+| `all-400.css` | `modern/all-400.css` | Full character set, selected weight, normal |
+| `all-400-italic.css` | `modern/all-400-italic.css` | Full character set, selected weight, italic |
+| `latin.css` | `modern/latin.css` | Latin, weights 400/600/700, normal |
+| `all.css` | `modern/all.css` | Full character set, all weights and styles |
 
 The per-weight entries support weights 100 through 900 in steps of 100. Replace
 `400` in the examples with the required weight. Import individual weights and
@@ -54,7 +56,7 @@ include only weights 400, 600, and 700 in normal style.
 
 All CSS entries are generated from the font selections and the `@font-face`
 template in `scripts/generate-css.mjs`. Edit the generator, then regenerate
-both the original and modern entries:
+both the original entries in the package root and the entries in `modern/`:
 
 ```sh
 npm run build:css
