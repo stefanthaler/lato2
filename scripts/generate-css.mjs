@@ -55,7 +55,7 @@ for (const subset of subsets) {
     writeCssEntries(`${subset}/${name}`, [face])
   }
 
-  writeCssEntries(subset, subset === 'latin' ? defaultFaces : faces)
+  writeCssEntries(`${subset}/index`, subset === 'latin' ? defaultFaces : faces)
 }
 
 writeCssEntries('index', defaultFaces)

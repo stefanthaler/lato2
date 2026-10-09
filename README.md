@@ -38,8 +38,11 @@ Individual Latin entries exist only in `latin/` and `modern/latin/`. Migrate
 The same applies to every weight and italic variant: `400-italic.css` becomes
 `latin/400-italic.css`, and `modern/400-italic.css` becomes
 `modern/latin/400-italic.css`. No compatibility copies or redirects are provided.
-Only the aggregates `all.css`, `latin.css`, and `index.css` remain directly in
-the package root and in `modern/`.
+Subset aggregates live alongside individual entries as `index.css`. Migrate
+`all.css` to `all/index.css` and `latin.css` to `latin/index.css`;
+`modern/all.css` to `modern/all/index.css` and `modern/latin.css` to `modern/latin/index.css`.
+No compatibility copies or redirects are provided. Only the default `index.css`
+remains directly in the package root and in `modern/`.
 
 | Original entry | WOFF2-only entry | Font selection |
 | --- | --- | --- |
@@ -48,8 +51,8 @@ the package root and in `modern/`.
 | `latin/400-italic.css` | `modern/latin/400-italic.css` | Latin, selected weight, italic |
 | `all/400.css` | `modern/all/400.css` | Full character set, selected weight, normal |
 | `all/400-italic.css` | `modern/all/400-italic.css` | Full character set, selected weight, italic |
-| `latin.css` | `modern/latin.css` | Latin, weights 400/600/700, normal |
-| `all.css` | `modern/all.css` | Full character set, all weights and styles |
+| `latin/index.css` | `modern/latin/index.css` | Latin, weights 400/600/700, normal |
+| `all/index.css` | `modern/all/index.css` | Full character set, all weights and styles |
 
 The per-weight entries support weights 100 through 900 in steps of 100. Replace
 `400` in the examples with the required weight. Import individual weights and
@@ -59,7 +62,7 @@ Original entries in the package root, `all/`, and `latin/` use WOFF2 first, with
 for browsers without WOFF2 support. Modern entries require a browser with WOFF2 support
 and use only WOFF2 sources, without a WOFF fallback. They preserve the font
 family, weight, style, `font-display: swap`, and character set of the original
-entry. The default `index.css` and `latin.css` entries and their modern variants
+entry. The default `index.css` and `latin/index.css` entries and their modern variants
 include only weights 400, 600, and 700 in normal style.
 
 ## Maintaining the CSS entries
@@ -72,8 +75,8 @@ both sets, including their subset directories:
 npm run build:css
 ```
 
-The generator creates 78 CSS entries: 3 directly in the package root and 3
-directly in `modern/`, plus 18 in each of `all/`, `latin/`, `modern/all/`, and
+The generator creates 78 CSS entries: 1 directly in the package root and 1
+directly in `modern/`, plus 19 in each of `all/`, `latin/`, `modern/all/`, and
 `modern/latin/`: 39 original and 39 modern entries in total. Font asset links
 are relative to each CSS file's directory.
 
