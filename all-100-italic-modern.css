@@ -1,0 +1,8 @@
+/* lato2-all-100-italic */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100;
+  src: url('./files/lato-all-100-italic.woff2') format('woff2');
+}
