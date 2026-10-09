@@ -52,8 +52,9 @@ The per-weight entries support weights 100 through 900 in steps of 100. Replace
 `400` in the examples with the required weight. Import individual weights and
 styles when you only need a few variants.
 
-Both original and modern entries require a browser with WOFF2 support and use
-only WOFF2 sources, without a WOFF fallback. Modern entries preserve the font
+Original entries in the package root, `all/`, and `latin/` use WOFF2 first, with WOFF as a fallback
+for browsers without WOFF2 support. Modern entries require a browser with WOFF2 support
+and use only WOFF2 sources, without a WOFF fallback. They preserve the font
 family, weight, style, `font-display: swap`, and character set of the original
 entry. The default `index.css` and `latin.css` entries and their modern variants
 include only weights 400, 600, and 700 in normal style.
