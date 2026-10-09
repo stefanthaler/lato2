@@ -8,6 +8,20 @@ Node package for Lato 2.0 font.
 npm install @stefanthaler/lato2
 ```
 
+## Default import
+
+For bundlers and other tools that support CSS imports, the package root resolves
+to `css/default.css`:
+
+```js
+import '@stefanthaler/lato2';
+```
+
+This recommended Latin set includes weights 400, 600, and 700 in normal style,
+using WOFF2 first with a WOFF fallback. It is not the full set of weights and
+styles. The entry point is CSS, not a JavaScript module for execution in Node.js.
+Use the explicit modern import below when you only want WOFF2 sources.
+
 ## WOFF2-only imports
 
 Use the CSS entries in `css/modern/` to include only WOFF2 font assets in your application:
@@ -64,6 +78,11 @@ for their respective character sets, in both the original and modern variants.
 All generated CSS lives under `css/`. Both variants share the 72 font files in
 `fonts/`: 36 WOFF and 36 WOFF2 assets, with no separate modern resource directory.
 
+The npm package contains the ready-to-use `css/` and `fonts/` directories,
+including `fonts/OFL.txt`, plus `package.json`, `README.md`, and `LICENSE`.
+Development scripts and IDE files are not included. The following tree shows
+the repository layout; `scripts/` is available only in the repository.
+
 ```text
 css/
 ├── default.css
@@ -75,15 +94,17 @@ css/
     └── latin/           # index.css and individual weights/styles
 fonts/
 ├── lato-*.woff
-└── lato-*.woff2
+├── lato-*.woff2
+└── OFL.txt
 scripts/
 └── generate-css.mjs
 ```
 
-## Migrating imports
+## Migrating imports to 2.0.0
 
-This reorganization changes public CSS imports and direct font paths. Move all
-CSS imports under `css/`, preserving the existing relative hierarchy:
+Version 2.0.0 is a major release with breaking changes to public CSS imports and
+direct font paths compared with 1.x. Move all CSS imports under `css/`, preserving
+the existing relative hierarchy:
 
 - `default.css` to `css/default.css` and `modern/default.css` to `css/modern/default.css`.
 - `all/400.css` to `css/all/400.css` and `latin/index.css` to `css/latin/index.css`.
@@ -106,6 +127,9 @@ or redirects are provided.
 
 ## Maintaining the CSS entries
 
+Run these development commands from a repository checkout, not from the
+installed npm package.
+
 All CSS entries are generated from the font selections and the `@font-face`
 template in `scripts/generate-css.mjs`. Edit the generator, then regenerate
 both sets, including their subset directories:
@@ -123,6 +147,18 @@ CSS file's directory.
 Do not edit the generated CSS files directly.
 
 The same generator runs automatically before `npm pack` and `npm publish`.
+
+## License
+
+Package code and tooling are licensed under the [Apache License 2.0](LICENSE).
+The font files are licensed under the [SIL Open Font License 1.1](fonts/OFL.txt),
+with the original copyright 2011-2015 by tyPoland Lukasz Dziedzic and Reserved
+Font Name "Lato". The full font license and original notices are included in
+`fonts/OFL.txt`; the font binaries and their embedded notices are unchanged.
+
+The package metadata uses `(Apache-2.0 AND OFL-1.1)` to describe these separately
+licensed components. This is not a choice between licenses and does not mean
+that every file is licensed under both.
 
 ## Resources
 
