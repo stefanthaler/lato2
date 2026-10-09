@@ -58,6 +58,6 @@ for (const subset of subsets) {
   writeCssEntries(`${subset}/index`, faces)
 }
 
-writeCssEntries('index', defaultFaces)
+writeCssEntries('default', defaultFaces)
 
 console.log(`Generated ${generatedFiles} CSS files.`)

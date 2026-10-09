@@ -13,9 +13,14 @@ npm install @stefanthaler/lato2
 Use the CSS entries in `modern/` to include only WOFF2 font assets in your application:
 
 ```js
-import '@stefanthaler/lato2/modern/latin/400.css';
-import '@stefanthaler/lato2/modern/latin/600.css';
-import '@stefanthaler/lato2/modern/latin/700.css';
+import '@stefanthaler/lato2/modern/default.css';
+```
+
+This recommended Latin set includes weights 400, 600, and 700 in normal style.
+For the same set with a WOFF fallback, use:
+
+```js
+import '@stefanthaler/lato2/default.css';
 ```
 
 Apply the font family in your stylesheet:
@@ -41,12 +46,14 @@ The same applies to every weight and italic variant: `400-italic.css` becomes
 Subset aggregates live alongside individual entries as `index.css`. Migrate
 `all.css` to `all/index.css` and `latin.css` to `latin/index.css`;
 `modern/all.css` to `modern/all/index.css` and `modern/latin.css` to `modern/latin/index.css`.
-No compatibility copies or redirects are provided. Only the default `index.css`
+Recommended sets are named `default.css`. Migrate `index.css` to `default.css`
+and `modern/index.css` to `modern/default.css`. These replace the old root-level
+entries; no compatibility copies or redirects are provided. Only `default.css`
 remains directly in the package root and in `modern/`.
 
 | Original entry | WOFF2-only entry | Font selection |
 | --- | --- | --- |
-| `index.css` | `modern/index.css` | Latin, weights 400/600/700, normal |
+| `default.css` | `modern/default.css` | Recommended Latin set, weights 400/600/700, normal |
 | `latin/400.css` | `modern/latin/400.css` | Latin, selected weight, normal |
 | `latin/400-italic.css` | `modern/latin/400-italic.css` | Latin, selected weight, italic |
 | `all/400.css` | `modern/all/400.css` | Full character set, selected weight, normal |
@@ -62,7 +69,7 @@ Original entries in the package root, `all/`, and `latin/` use WOFF2 first, with
 for browsers without WOFF2 support. Modern entries require a browser with WOFF2 support
 and use only WOFF2 sources, without a WOFF fallback. They preserve the font
 family, weight, style, `font-display: swap`, and character set of the original
-entry. Only the default `index.css` and `modern/index.css` entries include
+entry. Only the recommended `default.css` and `modern/default.css` entries include
 weights 400, 600, and 700 in normal style. Both subset aggregates include all weights and styles
 for their respective character sets, in both the original and modern variants.
 
