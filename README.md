@@ -26,19 +26,25 @@ body {
 }
 ```
 
-Every existing CSS entry has a corresponding entry with the same filename in
-`modern/`. These paths replace the former root-level `*-modern.css` paths;
-no compatibility copies are provided.
+Every original CSS entry has a corresponding entry with the same relative path
+inside `modern/`. Individual subset entries live in `all/` and `latin/`, and in
+`modern/all/` and `modern/latin/`, without subset prefixes in their filenames.
+For example, `all-400.css` is now `all/400.css`, and `modern/latin-400.css` is now
+`modern/latin/400.css`. These paths replace the former prefixed paths and the
+root-level `*-modern.css` paths; no compatibility copies are provided.
+
+Short Latin entries such as `400.css` and the aggregates `all.css`, `latin.css`,
+and `index.css` remain directly in the package root and in `modern/`.
 
 | Original entry | WOFF2-only entry | Font selection |
 | --- | --- | --- |
 | `index.css` | `modern/index.css` | Latin, weights 400/600/700, normal |
 | `400.css` | `modern/400.css` | Latin, selected weight, normal |
 | `400-italic.css` | `modern/400-italic.css` | Latin, selected weight, italic |
-| `latin-400.css` | `modern/latin-400.css` | Latin, selected weight, normal |
-| `latin-400-italic.css` | `modern/latin-400-italic.css` | Latin, selected weight, italic |
-| `all-400.css` | `modern/all-400.css` | Full character set, selected weight, normal |
-| `all-400-italic.css` | `modern/all-400-italic.css` | Full character set, selected weight, italic |
+| `latin/400.css` | `modern/latin/400.css` | Latin, selected weight, normal |
+| `latin/400-italic.css` | `modern/latin/400-italic.css` | Latin, selected weight, italic |
+| `all/400.css` | `modern/all/400.css` | Full character set, selected weight, normal |
+| `all/400-italic.css` | `modern/all/400-italic.css` | Full character set, selected weight, italic |
 | `latin.css` | `modern/latin.css` | Latin, weights 400/600/700, normal |
 | `all.css` | `modern/all.css` | Full character set, all weights and styles |
 
@@ -56,11 +62,15 @@ include only weights 400, 600, and 700 in normal style.
 
 All CSS entries are generated from the font selections and the `@font-face`
 template in `scripts/generate-css.mjs`. Edit the generator, then regenerate
-both the original entries in the package root and the entries in `modern/`:
+both sets, including their subset directories:
 
 ```sh
 npm run build:css
 ```
+
+The generator creates 114 CSS entries: 21 directly in the package root and 21
+directly in `modern/`, plus 18 in each of `all/`, `latin/`, `modern/all/`, and
+`modern/latin/`. Font asset links are relative to each CSS file's directory.
 
 Do not edit the generated CSS files directly.
 

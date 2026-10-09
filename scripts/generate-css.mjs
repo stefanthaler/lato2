@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
-import { dirname, join } from 'node:path'
+import { dirname, join, relative, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const packageDirectory = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -7,8 +7,8 @@ const subsets = ['latin', 'all']
 const weights = [100, 200, 300, 400, 500, 600, 700, 800, 900]
 const styles = ['italic', 'normal']
 const variants = [
-  { directory: '', assetPrefix: './files/', formats: ['woff2'] },
-  { directory: 'modern', assetPrefix: '../files/', formats: ['woff2'] },
+  { directory: '', formats: ['woff2'] },
+  { directory: 'modern', formats: ['woff2'] },
 ]
 const defaultFaces = [400, 600, 700].map(weight => ({ subset: 'latin', weight, style: 'normal' }))
 
@@ -35,11 +35,14 @@ function fontFaceCss({ subset, weight, style }, formats, assetPrefix) {
 }
 
 function writeCssEntries(name, faces) {
-  for (const { directory, assetPrefix, formats } of variants) {
-    const outputDirectory = join(packageDirectory, directory)
+  for (const { directory, formats } of variants) {
+    const outputFile = join(packageDirectory, directory, `${name}.css`)
+    const outputDirectory = dirname(outputFile)
     mkdirSync(outputDirectory, { recursive: true })
+    const assetPath = relative(outputDirectory, join(packageDirectory, 'files')).split(sep).join('/')
+    const assetPrefix = `${assetPath.startsWith('.') ? '' : './'}${assetPath}/`
     const css = faces.map(face => fontFaceCss(face, formats, assetPrefix)).join('\n\n') + '\n';
-    writeFileSync(join(outputDirectory, `${name}.css`), css)
+    writeFileSync(outputFile, css)
     generatedFiles++
   }
 }
@@ -49,7 +52,7 @@ for (const subset of subsets) {
 
   for (const face of faces) {
     const name = `${face.weight}${face.style === 'italic' ? '-italic' : ''}`
-    writeCssEntries(`${subset}-${name}`, [face])
+    writeCssEntries(`${subset}/${name}`, [face])
     if (subset === 'latin') {
       writeCssEntries(name, [face])
     }
