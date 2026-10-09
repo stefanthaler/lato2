@@ -51,7 +51,7 @@ remains directly in the package root and in `modern/`.
 | `latin/400-italic.css` | `modern/latin/400-italic.css` | Latin, selected weight, italic |
 | `all/400.css` | `modern/all/400.css` | Full character set, selected weight, normal |
 | `all/400-italic.css` | `modern/all/400-italic.css` | Full character set, selected weight, italic |
-| `latin/index.css` | `modern/latin/index.css` | Latin, weights 400/600/700, normal |
+| `latin/index.css` | `modern/latin/index.css` | Latin, all weights and styles |
 | `all/index.css` | `modern/all/index.css` | Full character set, all weights and styles |
 
 The per-weight entries support weights 100 through 900 in steps of 100. Replace
@@ -62,8 +62,9 @@ Original entries in the package root, `all/`, and `latin/` use WOFF2 first, with
 for browsers without WOFF2 support. Modern entries require a browser with WOFF2 support
 and use only WOFF2 sources, without a WOFF fallback. They preserve the font
 family, weight, style, `font-display: swap`, and character set of the original
-entry. The default `index.css` and `latin/index.css` entries and their modern variants
-include only weights 400, 600, and 700 in normal style.
+entry. Only the default `index.css` and `modern/index.css` entries include
+weights 400, 600, and 700 in normal style. Both subset aggregates include all weights and styles
+for their respective character sets, in both the original and modern variants.
 
 ## Maintaining the CSS entries
 
