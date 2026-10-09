@@ -37,15 +37,15 @@ and `css/latin/`, and in `css/modern/all/` and `css/modern/latin/`, without subs
 prefixes in their filenames. Subset aggregates live alongside individual entries
 as `index.css`; the recommended sets are `css/default.css` and `css/modern/default.css`.
 
-| WOFF2 + WOFF entry | WOFF2-only entry | Font selection |
-| --- | --- | --- |
-| `css/default.css` | `css/modern/default.css` | Recommended Latin set, weights 400/600/700, normal |
-| `css/latin/400.css` | `css/modern/latin/400.css` | Latin, selected weight, normal |
-| `css/latin/400-italic.css` | `css/modern/latin/400-italic.css` | Latin, selected weight, italic |
-| `css/all/400.css` | `css/modern/all/400.css` | Full character set, selected weight, normal |
-| `css/all/400-italic.css` | `css/modern/all/400-italic.css` | Full character set, selected weight, italic |
-| `css/latin/index.css` | `css/modern/latin/index.css` | Latin, all weights and styles |
-| `css/all/index.css` | `css/modern/all/index.css` | Full character set, all weights and styles |
+| WOFF2 + WOFF entry         | WOFF2-only entry                  | Font selection                                     |
+|----------------------------|-----------------------------------|----------------------------------------------------|
+| `css/default.css`          | `css/modern/default.css`          | Recommended Latin set, weights 400/600/700, normal |
+| `css/latin/400.css`        | `css/modern/latin/400.css`        | Latin, selected weight, normal                     |
+| `css/latin/400-italic.css` | `css/modern/latin/400-italic.css` | Latin, selected weight, italic                     |
+| `css/all/400.css`          | `css/modern/all/400.css`          | Full character set, selected weight, normal        |
+| `css/all/400-italic.css`   | `css/modern/all/400-italic.css`   | Full character set, selected weight, italic        |
+| `css/latin/index.css`      | `css/modern/latin/index.css`      | Latin, all weights and styles                      |
+| `css/all/index.css`        | `css/modern/all/index.css`        | Full character set, all weights and styles         |
 
 The per-weight entries support weights 100 through 900 in steps of 100. Replace
 `400` in the examples with the required weight. Import individual weights and
