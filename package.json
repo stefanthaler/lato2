@@ -28,6 +28,10 @@
     "self-hosted"
   ],
   "author": "Stefan Thaler",
+  "contributors": [
+    "Alexander Popoff (https://github.com/aerialist7)",
+    "Mikhail Porotkin (https://github.com/porotkin)"
+  ],
   "license": "(Apache-2.0 AND OFL-1.1)",
   "bugs": {
     "url": "https://github.com/stefanthaler/lato2/issues"
